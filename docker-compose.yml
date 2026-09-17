@@ -1,0 +1,14 @@
+services:
+  minio:
+      image: minio/minio
+      ports:
+        - "9001:9001"
+        - "9002:9000"
+      environment:
+        MINIO_ROOT_USER: admin
+        MINIO_ROOT_PASSWORD: supersecretpassword
+      command: server /data --console-address ":9001"
+      volumes:
+        - minio-data:/data
+volumes:
+  minio-data:
